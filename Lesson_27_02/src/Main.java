@@ -34,7 +34,11 @@ public class Main {
                 res += (int) Math.pow(2, j) * myArr.get(i);
                 j++;
             }
+<<<<<<< HEAD
             System.out.printf("Десятичное число:  " + res);
+=======
+            System.out.printf("Десятичное число: " + res);
+>>>>>>> origin/main
         } else {
             System.out.println("Некорректный ввод!");
         }
