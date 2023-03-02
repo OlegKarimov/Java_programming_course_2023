@@ -15,6 +15,8 @@ public class DZ_Restaurant {
         // - при желании клиента выполняет бронирование столика.
 
         HashMap<Integer, Boolean> tables = new HashMap<Integer, Boolean>();
+        String patch = "C:\\Users\\AIT TR Student\\Documents\\GitHub\\Java_programming_course_2023\\Lesson_28_02\\src";
+        String fileName = "tables_status.txt";
 
         // все столы свободны (не заняты)
         tables.put(1, false);
@@ -31,9 +33,7 @@ public class DZ_Restaurant {
             System.out.println("Здравствуйте!");
             boolean is_full = false;
 
-            // считывание статуса столиков из файла
-            //get_table_status_from_file();
-
+            get_table_status_from_file(tables, patch + fileName);   // считывание статуса столиков из файла
 
             // Проверка на наличие свободных столиков
             is_full = is_full(tables, 5);
@@ -46,29 +46,14 @@ public class DZ_Restaurant {
 
             print_table_status(tables); // метод печатает статус столов
 
-            // запрос к пользователю
-            System.out.println("Выберите номер столика: ");
+            System.out.println("Выберите номер столика: ");     // запрос к пользователю
             int table_num = sc.nextInt();
 
-            //_______________________________
-            // Подготовка к сохранению статуса столов - создание файла
-            String path = "C:\\Users\\AIT TR Student\\IdeaProjects\\Lektions_Konsultations_DZ\\Lesson_28_02\\src\\";
-            try {
-                File myFile = new File(path + "tables_status.txt"); // Укажите свое имя файла
-                if (myFile.createNewFile()) {
-                    System.out.println("Файл создан: " + myFile.getName());
-                } else {
-                    System.out.println("Файл уже существует.");
-                }
-            } catch (IOException e) {
-                System.out.println("Произошла ошибка.");
-                e.printStackTrace();
-            }
-
             reserv_table(tables, table_num); // метод, который резервирует стол
+            create_file(patch, fileName); // создаем файл
 
             // ________________________
-            save_table_status(tables, path); // сохраним статус столов в файле
+            save_table_status(tables, patch + fileName); // сохраним статус столов в файле
             // ________________________
 
             print_table_status(tables);
@@ -79,9 +64,7 @@ public class DZ_Restaurant {
             char ch = scanner.next().toLowerCase().charAt(0);
             if (ch == 'n') break;
             else continue;
-
         }
-
     }
 
     public static void reserv_table(HashMap<Integer, Boolean> map, int num) {
@@ -125,19 +108,12 @@ public class DZ_Restaurant {
 
 
     //______________________________
-    public static void save_table_status(HashMap<Integer, Boolean> map, String path) {
+    public static void save_table_status(HashMap<Integer, Boolean> map, String patch) {
         try {
-            FileWriter myWriter = new FileWriter(path + "tables_status.txt");
+            FileWriter myWriter = new FileWriter(patch);
             // здесь будем толкать строки в файл
             for (Object i : map.keySet()) {
-                String status = "";
-                if (map.get(i).equals(true)) {
-                    status = " зарезервирован ";
-                } else {
-                    status = " свободен ";
-                }
-                myWriter.write("Столик: " + i + " статус: " + status + '\n');
-                // System.out.println();
+                myWriter.write(i + ":" + map.get(i) + '\n');
             }
             myWriter.close();
             System.out.println("Успешная запись в файл.");
@@ -145,6 +121,52 @@ public class DZ_Restaurant {
         } catch (IOException e) {
             System.out.println("Произошла ошибка.");
             System.out.println();
+            e.printStackTrace();
+        }
+    }
+
+    public static void get_table_status_from_file(HashMap<Integer, Boolean> map, String patch) {
+        // считывание статуса столиков из файла
+
+        try {
+            File myObj = new File(patch);
+
+            if (myObj.exists()) {
+                Scanner myReader = new Scanner(myObj);
+                while (myReader.hasNextLine()) {
+                    String data = myReader.nextLine();
+                    int i = Integer.parseInt(data.substring(0, 1));
+                    String str = data.substring(2);
+                    if (str.equals("true")) {
+                        map.put(i, true);
+                    } else if (str.equals("false")) {
+                        map.put(i, false);
+                    }
+                }
+                myReader.close();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public static void create_file(String patch, String file_name) {
+        //_______________________________
+        // Подготовка к сохранению статуса столов - создание файла
+
+        try {
+            File myFile = new File(patch + file_name); // Укажите свое имя файла
+            if (myFile.createNewFile()) {
+                System.out.println("Файл создан: " + myFile.getName());
+            } else {
+                System.out.println("Файл уже существует.");
+            }
+        } catch (IOException e) {
+            System.out.println("Произошла ошибка.");
             e.printStackTrace();
         }
     }
