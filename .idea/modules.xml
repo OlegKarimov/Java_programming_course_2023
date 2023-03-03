@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KONSPEKT/KONSPEKT.iml" filepath="$PROJECT_DIR$/KONSPEKT/KONSPEKT.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" filepath="$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson32_02_03/Lesson32_02_03.iml" filepath="$PROJECT_DIR$/Lesson32_02_03/Lesson32_02_03.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_22_02/Lesson_22_02.iml" filepath="$PROJECT_DIR$/Lesson_22_02/Lesson_22_02.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_24_02/Lesson_24_02.iml" filepath="$PROJECT_DIR$/Lesson_24_02/Lesson_24_02.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_27_02/Lesson_27_02.iml" filepath="$PROJECT_DIR$/Lesson_27_02/Lesson_27_02.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_28_02/Lesson_28_02.iml" filepath="$PROJECT_DIR$/Lesson_28_02/Lesson_28_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" filepath="$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_28_22.02/code/Lesson_22_02/Lesson_22_02.iml" filepath="$PROJECT_DIR$/Lesson_28_22.02/code/Lesson_22_02/Lesson_22_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_29_24.02/code/Lesson_24_02/Lesson_24_02.iml" filepath="$PROJECT_DIR$/Lesson_29_24.02/code/Lesson_24_02/Lesson_24_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_30_27.02/code/Lesson_27_02/Lesson_27_02.iml" filepath="$PROJECT_DIR$/Lesson_30_27.02/code/Lesson_27_02/Lesson_27_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_31_28.02/code/Lesson_28_02/Lesson_28_02.iml" filepath="$PROJECT_DIR$/Lesson_31_28.02/code/Lesson_28_02/Lesson_28_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_34_03.03/code/todo_list/todo_list.iml" filepath="$PROJECT_DIR$/Lesson_34_03.03/code/todo_list/todo_list.iml" />
     </modules>
   </component>
 </project>
