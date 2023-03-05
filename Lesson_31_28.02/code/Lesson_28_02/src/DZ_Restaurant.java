@@ -66,19 +66,24 @@ public class DZ_Restaurant {
 
             print_table_status(tables); // метод печатает статус столов
 
+            int table_num = 0;
+
             System.out.println("Выберите номер столика: ");     // запрос к пользователю
-            int table_num = readMenueChoice();
+            table_num = readMenueChoice();
 
-            reserv_table(tables, table_num); // метод, который резервирует стол
+            if (table_num != 0) {
 
-            create_file(fileName); // создаем файл
+                reserv_table(tables, table_num); // метод, который резервирует стол
 
-            // ________________________
+                create_file(fileName); // создаем файл
 
-            save_table_status(tables, fileName); // сохраним статус столов в файле
-            // ________________________
+                // ________________________
 
-            print_table_status(tables);
+                save_table_status(tables, fileName); // сохраним статус столов в файле
+                // ________________________
+
+                print_table_status(tables);
+            }
 
             System.out.println();
             System.out.println("Хотите продолжить? y/n");
