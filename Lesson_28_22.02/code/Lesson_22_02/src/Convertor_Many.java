@@ -16,7 +16,7 @@ import java.util.Scanner;
 
         */
 
-public class Main {
+public class Convertor_Many {
     public static void main(String[] args) {
 
         HashMap<String, Double> curValue = new HashMap<>();

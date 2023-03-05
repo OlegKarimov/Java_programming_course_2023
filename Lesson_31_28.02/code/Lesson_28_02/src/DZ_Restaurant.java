@@ -2,7 +2,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DZ_Restaurant {
@@ -14,18 +16,36 @@ public class DZ_Restaurant {
         // - сообщает о наличии свободных стликов;
         // - при желании клиента выполняет бронирование столика.
 
-        HashMap<Integer, Boolean> tables = new HashMap<Integer, Boolean>();
-        String patch = "C:\\Users\\AIT TR Student\\Documents\\GitHub\\Java_programming_course_2023\\Lesson_28_02\\src";
+        // 2.Бот для ресторана - доработки:
+        //
+        //Добавить запрос 1 "На имя кого резервировать столик?"
+        //Добавить запрос 2 "Хотите оставить контактный телефон?"
+        //Добавить запрос 3 "С какого часа"?
+        //Добавить запрос "Еще столик?"
+        //В главном меню начать с выбора: Резервирование или Отказ от брони
+        //Добавить функционал "отказа от брони"
+        //При печати статуса столиков показывать только свободные столики
+        //Убрать служебные сообщения
+        //Добавить защиту от неправильного ввода
+        //Сохраненние статуса столиков в файле, считывание статуса столиков из файла
+
+/*
+        HashMap<Integer,ArrayList<String>> map = new HashMap<>();
+        ArrayList<String> buf = new ArrayList<>();
+        buf.add("+");
+        map.put(0,buf);
+
+*/
+
+        ArrayList<String> tables = new ArrayList<String>();
         String fileName = "tables_status.txt";
 
         // все столы свободны (не заняты)
-        tables.put(1, false);
-        tables.put(2, false);
-        tables.put(3, false);
-        tables.put(4, false);
-        tables.put(5, false);
+        for (int i = 0; i < 5; i++) {
+            tables.add(i, "-");
+        }
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         boolean keyExit = true;
         while (keyExit) {
@@ -33,7 +53,7 @@ public class DZ_Restaurant {
             System.out.println("Здравствуйте!");
             boolean is_full = false;
 
-            get_table_status_from_file(tables, patch + fileName);   // считывание статуса столиков из файла
+            get_table_status_from_file(tables, fileName);   // считывание статуса столиков из файла
 
             // Проверка на наличие свободных столиков
             is_full = is_full(tables, 5);
@@ -47,73 +67,109 @@ public class DZ_Restaurant {
             print_table_status(tables); // метод печатает статус столов
 
             System.out.println("Выберите номер столика: ");     // запрос к пользователю
-            int table_num = sc.nextInt();
+            int table_num = readMenueChoice();
 
             reserv_table(tables, table_num); // метод, который резервирует стол
-            create_file(patch, fileName); // создаем файл
+
+            create_file(fileName); // создаем файл
 
             // ________________________
-            save_table_status(tables, patch + fileName); // сохраним статус столов в файле
+
+            save_table_status(tables, fileName); // сохраним статус столов в файле
             // ________________________
 
             print_table_status(tables);
 
             System.out.println();
             System.out.println("Хотите продолжить? y/n");
-            Scanner scanner = new Scanner(System.in);
+            // Scanner scanner = new Scanner(System.in);
             char ch = scanner.next().toLowerCase().charAt(0);
             if (ch == 'n') break;
             else continue;
         }
     }
 
-    public static void reserv_table(HashMap<Integer, Boolean> map, int num) {
-        if (map.get(num).equals(false)) {
-            map.put(num, true);
+    // метод, который считывает выбор пользователя
+    public static int readMenueChoice() {
+        Scanner sc = new Scanner(System.in);
+        int menuChoice = 0;
+        try {
+            menuChoice = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Нужно вводить числа а не символы");
+        }
+        return menuChoice;
+    }
+
+    public static void reserv_table(ArrayList<String> tab, int num) {
+        int i = num - 1;
+        String strName;
+        String strTel = "";
+        String strTime;
+        if (tab.get(i).charAt(0) == '-') {
+            System.out.println("На чьё имя зарезервировать столик?");
+            Scanner scanner = new Scanner(System.in);
+            strName = scanner.nextLine();
+            System.out.println("Хотите оставить контактный телефон? y/n");
+            Scanner sc = new Scanner(System.in);
+            char ch = sc.next().toLowerCase().charAt(0);
+            if (ch == 'y') {
+                System.out.println("Введите номер телефона : ");
+                strTel = scanner.nextLine();
+            }
+            Scanner sr = new Scanner(System.in);
+            System.out.println("С какого часа зарезервировать столик?");
+            strTime = sr.nextLine();   // сделать ввод даты Date date = formatter.parse(strDate); !!!!
+
+
+// Собираем строку
+            String buf;
+            if (strTel.equals("")) {
+                buf = "+" + "°" + strName + "°" + strTime;
+            } else
+                buf = "+" + "°" + strName + "°" + strTel + "°" + strTime;
+            tab.set(i, buf); // вставляем на место минуса
             System.out.println("Столик " + num + " зарезервирован.");
-            //       return;
         } else {
             System.out.println("Столик " + num + " уже зарезервирован.");
-            //     return;
         }
     }
 
-    public static void print_table_status(HashMap<Integer, Boolean> map) {
-        for (Object i : map.keySet()) {
+    public static void print_table_status(ArrayList<String> tab) {
+        for (int i = 0; i < tab.size(); i++) {
             String status = "";
-            if (map.get(i).equals(true)) {
-                status = " зарезервирован ";
+            if (tab.get(i).charAt(0) == '+') {
+                String[] buf = tab.get(i).split("°");
+                if (buf.length == 3) {
+                    status = " зарезервирован за " + buf[1] + " в " + buf[2];
+                } else status = " зарезервирован за " + buf[1] + " в " + buf[3] + ", тел. : " + buf[2];
+
             } else {
                 status = " свободен ";
             }
-            System.out.println("Столик: " + i + " статус: " + status);
+            System.out.println("Столик: " + (i + 1) + " статус: " + status);
         }
     }
 
-    public static boolean is_full(HashMap<Integer, Boolean> map, int num) {
+    public static boolean is_full(ArrayList<String> tab, int num) {
         boolean is_full = true;
-        for (int i = 1; i < 6; i++) {
-            if (map.get(i) == false) {
+        for (String i : tab) {
+            if (i.charAt(0) == '-') {
                 is_full = false;
             }
         }
-        // если все столики зарезервированы, то есть все values в map == true
+        // если все столики зарезервированы, то есть все  == +
         return is_full;
         // иначе return false;
     }
 
-    //________________________
-    // в этом методе надо считать строки из файла занести их в HashMap tables
-    // требуется реализовать
-
-
     //______________________________
-    public static void save_table_status(HashMap<Integer, Boolean> map, String patch) {
+    public static void save_table_status(ArrayList<String> tab, String patch) {
         try {
             FileWriter myWriter = new FileWriter(patch);
             // здесь будем толкать строки в файл
-            for (Object i : map.keySet()) {
-                myWriter.write(i + ":" + map.get(i) + '\n');
+            for (String i : tab) {
+                myWriter.write(i + '\n');
             }
             myWriter.close();
             System.out.println("Успешная запись в файл.");
@@ -125,23 +181,18 @@ public class DZ_Restaurant {
         }
     }
 
-    public static void get_table_status_from_file(HashMap<Integer, Boolean> map, String patch) {
+    public static void get_table_status_from_file(ArrayList<String> tab, String patch) {
         // считывание статуса столиков из файла
-
         try {
             File myObj = new File(patch);
 
             if (myObj.exists()) {
                 Scanner myReader = new Scanner(myObj);
-                while (myReader.hasNextLine()) {
+                int i = 0;
+                while (myReader.hasNextLine() && (i < 5)) {
                     String data = myReader.nextLine();
-                    int i = Integer.parseInt(data.substring(0, 1));
-                    String str = data.substring(2);
-                    if (str.equals("true")) {
-                        map.put(i, true);
-                    } else if (str.equals("false")) {
-                        map.put(i, false);
-                    }
+                    tab.set(i, data);
+                    i++;
                 }
                 myReader.close();
             }
@@ -149,17 +200,15 @@ public class DZ_Restaurant {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
-
     }
 
 
-    public static void create_file(String patch, String file_name) {
+    public static void create_file(String file_name) {
         //_______________________________
         // Подготовка к сохранению статуса столов - создание файла
 
         try {
-            File myFile = new File(patch + file_name); // Укажите свое имя файла
+            File myFile = new File(file_name); // Укажите свое имя файла
             if (myFile.createNewFile()) {
                 System.out.println("Файл создан: " + myFile.getName());
             } else {

@@ -1,11 +1,11 @@
 public class KONSPEKT {
-    public static void main(String[] args) {
- /*
- 1        HashMap<keyType, valueType> nameHashMap = new HashMap<keyType, valueType>();
+public static void main(String[] args) {
 
- Внутри структуры/коллекции Map (Dictionary) данные хранятся в формате “ключ”-”значение”, то есть по парам.
- И в качестве ключей, и в качестве значений могут выступать любые типы — числа, строки или даже объекты других классов.
- ВНИМАНИЕ!!! Ключ должен быть уникален!
+1.        HashMap<keyType, valueType> nameHashMap = new HashMap<keyType, valueType>();
+
+Внутри структуры/коллекции Map (Dictionary) данные хранятся в формате “ключ”-”значение”, то есть по парам.
+И в качестве ключей, и в качестве значений могут выступать любые типы — числа, строки или даже объекты других классов.
+ВНИМАНИЕ!!! Ключ должен быть уникален!
 
 nameHashMap.put ( key , value) - добавление и обновление элемента
 nameHashMap.get ( key ) - получение значения по ключу
@@ -24,6 +24,7 @@ for (String i : nameHashMap.keySet()) { System.out.println("key: " + i + " value
 --------------------------------------------------------------------------------------------------------------------
 
 2.      HashSet myHashSet = new HashSet();
+
 Set в переводе с английского - это "множество каких-то элементов" в нашем контексте.
 Особенность этого множества в том, что оно может хранить только уникальные значения, элементы.
 Пример: бренды автомобилей - это множество, где каждый элемент должен быть уникален. Их сейчас порядка 100...
@@ -39,6 +40,8 @@ ArrayList - это динамический массив?
 
         System.out.println(namesList);  печать
 
+      arr.set(num, 0);                // заменяет (обновляет) значение элемента по индексу
+
         for (type var : array) { statements using var; } Вывод ArrayList в цикле for each
 
         ArrayList mylist = new ArrayList(); Обратная сортировка ArrayList
@@ -52,7 +55,11 @@ ArrayList - это динамический массив?
         Chekhachov Viacheslav
         Zhilina Katerina
 
+----------------------------------------------------------------------------------
 
-  */
-    }
+4. String str = "155";
+   n = Integer.parseInt(str); // перевод из строки в число
+
+   }
+
 }
