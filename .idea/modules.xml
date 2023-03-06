@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Lesson_35_06_03/code/DZ/DZ.iml" filepath="$PROJECT_DIR$/Lesson_35_06_03/code/DZ/DZ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_35_06_03/code/Leccon_35_06_03/Leccon_35_06_03.iml" filepath="$PROJECT_DIR$/Lesson_35_06_03/code/Leccon_35_06_03/Leccon_35_06_03.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" filepath="$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" filepath="$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_28_22.02/code/Lesson_22_02/Lesson_22_02.iml" filepath="$PROJECT_DIR$/Lesson_28_22.02/code/Lesson_22_02/Lesson_22_02.iml" />
