@@ -4,13 +4,21 @@ public class Wine {
     String sort;
     int year;
 
-    // Конструктор класса
+  /*  // Конструктор класса
     public Wine() {
         this.name = name;
         this.sort = sort;
         this.year = year;
     }
-
+*/
+//    @Override
+//    public String toString() {
+//        return "Wine{" +
+//                "name='" + name + '\'' +
+//                ", sort='" + sort + '\'' +
+//                ", year=" + year +
+//                '}';
+//    }
 
     public String toString() {
         return "Вино : " + "\n" +
