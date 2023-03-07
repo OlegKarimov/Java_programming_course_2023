@@ -38,7 +38,7 @@ public class Main {
 
 //-------------------------------------------------------------
         System.out.println("Вино " + myWineWhite.name);
-        myWineWhite.onStock(5);
+        System.out.println(myWineWhite.onStock(5));
 
 //------------------------------------------------------------
         System.out.println();

@@ -19,8 +19,8 @@ public class Wine {
                 "год = ' " + year + '.' + "\n";
     }
 
-    public void onStock(int kolBut) {
-        System.out.println("На складе имеется " + kolBut + " бутылок");
+    public String onStock(int kolBut) {
+        return ("На складе имеется " + kolBut + " бутылок");
     }
 
     public int getYear() {
