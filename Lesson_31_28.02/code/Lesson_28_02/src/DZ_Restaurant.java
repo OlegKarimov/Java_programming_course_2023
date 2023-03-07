@@ -12,22 +12,22 @@ public class DZ_Restaurant {
         System.out.println("Добро пожаловать в наш ресторан!");
         // Небольшой ресторан, в котором имеется 5 столиков, хочет внедрить у себя вежливого
         // телефонного администратора (бота), который:
-        // - принимает звонок от потенциального клиента;
-        // - сообщает о наличии свободных стликов;
-        // - при желании клиента выполняет бронирование столика.
+        // - принимает звонок от потенциального клиента; *
+        // - сообщает о наличии свободных стликов;      *
+        // - при желании клиента выполняет бронирование столика.  *
 
         // 2.Бот для ресторана - доработки:
         //
-        //Добавить запрос 1 "На имя кого резервировать столик?"
-        //Добавить запрос 2 "Хотите оставить контактный телефон?"
-        //Добавить запрос 3 "С какого часа"?
+        //Добавить запрос 1 "На имя кого резервировать столик?"     *
+        //Добавить запрос 2 "Хотите оставить контактный телефон?"   *
+        //Добавить запрос 3 "С какого часа"?                        *
         //Добавить запрос "Еще столик?"  ??????????????????? не нужен !!!!!!!!!!!!!!!!!!!!!!!!!!
-        //В главном меню начать с выбора: Резервирование или Отказ от брони
-        //Добавить функционал "отказа от брони"
+        //В главном меню начать с выбора: Резервирование или Отказ от брони  *
+        //Добавить функционал "отказа от брони"     *
         //При печати статуса столиков показывать только свободные столики
         //Убрать служебные сообщения
-        //Добавить защиту от неправильного ввода
-        //Сохраненние статуса столиков в файле, считывание статуса столиков из файла
+        //Добавить защиту от неправильного ввода    *
+        //Сохраненние статуса столиков в файле, считывание статуса столиков из файла    *
 
 /*
         HashMap<Integer,ArrayList<String>> map = new HashMap<>();
@@ -49,50 +49,138 @@ public class DZ_Restaurant {
 
         boolean keyExit = true;
         while (keyExit) {
-
-            System.out.println("Здравствуйте!");
+            System.out.println();
+            System.out.println("Вот наши столики : ");
             boolean is_full = false;
+            boolean is_empty = false;
 
             get_table_status_from_file(tables, fileName);   // считывание статуса столиков из файла
 
-            // Проверка на наличие свободных столиков
-            is_full = is_full(tables, 5);
-
-            if (!is_full) {
-                System.out.println("У нас есть свободные столики!");
-            } else {
-                System.out.println("Извините, у нас все столики заняты.");
-            }
-
             print_table_status(tables); // метод печатает статус столов
 
-            int table_num = 0;
+            is_full = is_full(tables, 5); // Проверка на наличие свободных столиков
 
-            System.out.println("Выберите номер столика: ");     // запрос к пользователю
-            table_num = readMenueChoice();
-
-            if (table_num != 0) {
-
-                reserv_table(tables, table_num); // метод, который резервирует стол
-
-                create_file(fileName); // создаем файл
-
-                // ________________________
-
-                save_table_status(tables, fileName); // сохраним статус столов в файле
-                // ________________________
-
-                print_table_status(tables);
+            if (is_full) { // Если всё занято
+                System.out.println("Извините, у нас все столики заняты.");
+                //  print_table_status(tables); // метод печатает статус столов
+                System.out.println("Хотите удалить бронь? y/n");
+                // Scanner scanner = new Scanner(System.in);
+                char ch = scanner.next().toLowerCase().charAt(0);
+                if (ch == 'y') {
+                    delite_reserv(tables, fileName);
+                    print_table_status(tables); // метод печатает статус столов
+                }
+            } else {
+                System.out.println();
+                System.out.println("У нас есть свободные столики!");
+                char ch = ' ';
+                do {
+                    is_empty = is_empty(tables, 5); // Проверка все ли столики пустые
+                    if (is_empty) {     // Если всё пусто
+                        System.out.println("Для резервирования столика нажмите - r, для выхода нажмите - e");
+                    } else {
+                        System.out.println("Для резервирования столика нажмите - r, для удаления брони - d, для выхода нажмите - e");
+                    }
+                    ch = scanner.next().toLowerCase().charAt(0);
+                    switch (ch) {
+                        case 'e': {
+                            keyExit = false;
+                            break;
+                        }
+                        case 'r': {    // резервирования столика
+                            main_reserv_tabel(tables, fileName);  // голавный метод резервирования стола
+                            print_table_status(tables);
+                            break;
+                        }
+                        case 'd': {
+                            if (!is_empty) {
+                                delite_reserv(tables, fileName);
+                                print_table_status(tables);
+                                break;
+                            }
+                        }
+                        default: {
+                            System.out.println("Ошибка. Повторите ввод.");
+                        }
+                    }
+                } while (keyExit);
             }
-
-            System.out.println();
-            System.out.println("Хотите продолжить? y/n");
-            // Scanner scanner = new Scanner(System.in);
-            char ch = scanner.next().toLowerCase().charAt(0);
-            if (ch == 'n') break;
-            else continue;
         }
     }
+
+    public static void delite_reserv(ArrayList<String> tables, String fileName) { // удаление брони стола
+        int table_num;
+        System.out.println();
+        print_only_full_table(tables); // Список столиков которые забронированы
+        do {
+            System.out.println();
+            System.out.println("Введите номер столика, с которого хотите снять бронь");
+            table_num = readMenueChoice();
+            if ((table_num < 1) || (table_num > 5)) {
+                System.out.println("Ошибка. Повторите ввод от 1 до 5");
+            } else {        // если от 1 до 5
+                if (tables.get(table_num - 1).charAt(0) == '-') {
+                    System.out.println("Стол номер " + table_num + " уже был свободен.");
+                } else {
+                    tables.set(table_num - 1, "-");
+                    // ________________________
+                    create_file(fileName); // создаем файл
+                    // ________________________
+                    save_table_status(tables, fileName); // сохраним статус столов в файле
+                }
+
+
+            }
+        } while ((table_num < 1) || (table_num > 5));
+
+    }
+
+    public static void print_only_empty_table(ArrayList<String> tables) {
+        System.out.println("Свободные столики :");
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).charAt(0) == '-') {
+                System.out.println("Столик: " + (i + 1) + " статус: свободен");
+            }
+        }
+    }
+
+
+    public static void print_only_full_table(ArrayList<String> tables) {
+        System.out.println("Список столиков которые забронированы :");
+        for (int i = 0; i < tables.size(); i++) {
+            String status = "";
+            if (tables.get(i).charAt(0) == '+') {
+                String[] buf = tables.get(i).split("°");
+                if (buf.length == 3) {
+                    status = " зарезервирован за " + buf[1] + " в " + buf[2];
+                } else status = " зарезервирован за " + buf[1] + " в " + buf[3] + ", тел. : " + buf[2];
+                System.out.println("Столик: " + (i + 1) + " статус: " + status);
+            }
+        }
+    }
+
+    public static void main_reserv_tabel(ArrayList<String> tables, String fileName) {
+        // голавный метод резервирования стола
+
+        int table_num = 0;
+        do {
+            System.out.println();
+            print_only_empty_table(tables);
+            System.out.println();
+            System.out.println("Выберите номер столика: ");     // запрос к пользователю
+            table_num = readMenueChoice();  // читаем выбор пользователя (номер столика)
+            if ((table_num < 1) || (table_num > 5)) {
+                System.out.println("Ошибка. Повторите ввод от 1 до 5");
+            } else {        // если от 1 до 5
+                reserv_table(tables, table_num); // метод, который резервирует стол
+                // ________________________
+                create_file(fileName); // создаем файл
+                // ________________________
+                save_table_status(tables, fileName); // сохраним статус столов в файле
+            }
+        } while ((table_num < 1) || (table_num > 5));
+    }
+
 
     // метод, который считывает выбор пользователя
     public static int readMenueChoice() {
@@ -125,7 +213,6 @@ public class DZ_Restaurant {
             Scanner sr = new Scanner(System.in);
             System.out.println("С какого часа зарезервировать столик?");
             strTime = sr.nextLine();   // сделать ввод даты Date date = formatter.parse(strDate); !!!!
-
 
 // Собираем строку
             String buf;
@@ -163,7 +250,19 @@ public class DZ_Restaurant {
                 is_full = false;
             }
         }
-        // если все столики зарезервированы, то есть все  == +
+        // если все столики зарезервированы, то есть все  == + ,то return true
+        return is_full;
+        // иначе return false;
+    }
+
+    public static boolean is_empty(ArrayList<String> tab, int num) {
+        boolean is_full = true;
+        for (String i : tab) {
+            if (i.charAt(0) == '+') {
+                is_full = false;
+            }
+        }
+        // если все столики пустые, то есть все  == - ,то return true
         return is_full;
         // иначе return false;
     }
@@ -214,15 +313,16 @@ public class DZ_Restaurant {
 
         try {
             File myFile = new File(file_name); // Укажите свое имя файла
-            if (myFile.createNewFile()) {
-                System.out.println("Файл создан: " + myFile.getName());
-            } else {
-                System.out.println("Файл уже существует.");
-            }
+            myFile.createNewFile();
+            //   System.out.println("Файл создан: " + myFile.getName());
+
+            // else {
+            // System.out.println("Файл уже существует.");
+            // }
         } catch (IOException e) {
             System.out.println("Произошла ошибка.");
             e.printStackTrace();
         }
-    }
 
+    }
 }
