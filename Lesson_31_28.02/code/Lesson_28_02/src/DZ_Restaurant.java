@@ -276,7 +276,7 @@ public class DZ_Restaurant {
                 myWriter.write(i + '\n');
             }
             myWriter.close();
-            System.out.println("Успешная запись в файл.");
+            // System.out.println("Успешная запись в файл.");
             System.out.println();
         } catch (IOException e) {
             System.out.println("Произошла ошибка.");

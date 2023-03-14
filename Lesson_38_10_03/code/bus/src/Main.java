@@ -17,10 +17,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Bus b1 = new Bus(1, "Berlin-Hamburg", "Иванов", 30, 50, 10);
-        Bus b2 = new Bus(2, "Berlin-Paris", "Петров", 35, 55, 100);
-        Bus b3 = new Bus(3, "Berlin-München", "Сидоров", 32, 58, 50);
+        // Создаём автобус
+        Bus bus1 = new Bus(1, 36, 60, 2);
 
+        // Создаем водителя
+        Driver d1 = new Driver("Водила Водилов", 25);
+
+        // назначаем водителя на автобус
+        d1.go(bus1);
+        System.out.println("Водитель автобуса: " + bus1.getDriver().name);
+
+        System.out.println();
+        // печатаем информацию о маршруте
+        System.out.println(bus1);
+
+        // рассчет потенциальной выручки
+        int revenue = 0;
+        revenue = (int) (0.6 * bus1.capacity) * 5 * bus1.price;
+
+        System.out.println("Потенциальная дневная выручка: " + revenue);
+
+//        Bus b1 = new Bus(1,);
+//        Bus b2 = new Bus(2, "Berlin-Paris", "Петров", 35, 55, 100);
+//        Bus b3 = new Bus(3, "Berlin-München", "Сидоров", 32, 58, 50);
+/*
         //System.out.println("Информация об автобусе: номер маршрута - " + b1.getBus_line() + ", Вместимость : " + b1.getCapacity() + " кресел, водитель - " + b1.getDriver() + ", скорость на маршруте - " + b1.getSpeed());
         //System.out.println("Информация об автобусе: номер маршрута - " + b2.getBus_line() + ", Вместимость : " + b2.getCapacity() + " кресел, водитель - " + b2.getDriver() + ", скорость на маршруте - " + b2.getSpeed());
         //System.out.println("Информация об автобусе: номер маршрута - " + b3.getBus_line() + ", Вместимость : " + b3.getCapacity() + " кресел, водитель - " + b3.getDriver() + ", скорость на маршруте - " + b3.getSpeed());
@@ -50,7 +70,7 @@ public class Main {
         System.out.println(b1.toString());
         System.out.println(b2.toString());
         System.out.println(b3.toString());
-
+*/
     }
 
 }

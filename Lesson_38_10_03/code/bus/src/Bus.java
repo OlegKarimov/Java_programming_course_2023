@@ -13,33 +13,64 @@
 //Делаем сколько сможем.
 
 public class Bus {
-    int bus_line;
-    String name;
-    String driver;
-    int capacity;
-    int speed;
-    int prise;
+    int bus_line; // номер маршрута
+    public Driver driver; // водитель взят из класса Driver
+    int capacity; // вместимость
+    int speed; // скорость автобуса
+    int price; // стоимость проезда
 
-    public Bus(int bus_line, String name, String driver, int capacity, int speed, int prise) {
+    public Bus(int bus_line, int capacity, int speed, int prise) {
         this.bus_line = bus_line;
-        this.name = name;
-        this.driver = driver;
+        //    this.driver = driver;
         this.capacity = capacity;
-        if (speed <= 60) {
-            this.speed = speed;
-        } else System.out.println("Автобус с очень большой скоростью. Не безопастно!");
-
-        this.prise = prise;
+        this.speed = speed;
+        this.price = prise;
     }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    // сеттер назначает водителя для класса Bus из класса Driver
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    // метод, который связывает автобус и водителя
+    public void go() {
+        System.out.println("Автобус " + this.bus_line + " поехал под управлением - " + driver.getName());
+    }
+
 
     @Override
     public String toString() {
-        return "Информация об автобусе: номер маршрута: " + bus_line +
-                ", Вместимость : " + capacity +
-                " кресел, водитель: " + driver +
-                ", скорость на маршруте: " + speed +
-                ", цена проезда: " + prise;
+        return "Информация об автобусе: " + "\n" +
+                "Номер маршрута: " + bus_line + "\n" +
+                "Вместимость: " + capacity + " кресел " + "\n" +
+                "Водитель: " + getDriver().name + "\n" +
+                "Скорость на маршруте: " + speed + ". ";
     }
+
+    //    public Bus(int bus_line, String name, String driver, int capacity, int speed, int prise) {
+//        this.bus_line = bus_line;
+//        this.name = name;
+//        this.driver = driver;
+//        this.capacity = capacity;
+//        if (speed <= 60) {
+//            this.speed = speed;
+//        } else System.out.println("Автобус с очень большой скоростью. Не безопастно!");
+//
+//        this.prise = prise;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Информация об автобусе: номер маршрута: " + bus_line +
+//                ", Вместимость : " + capacity +
+//                " кресел, водитель: " + driver +
+//                ", скорость на маршруте: " + speed +
+//                ", цена проезда: " + prise;
+//    }
 
     public int getBus_line() {
         return bus_line;
@@ -49,21 +80,15 @@ public class Bus {
         this.bus_line = bus_line;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDriver() {
-        return driver;
-    }
-
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
+//
+//    public String getDriver() {
+//        return driver;
+//    }
+//
+//    public void setDriver(String driver) {
+//        this.driver = driver;
+//    }
 
     public int getCapacity() {
         return capacity;
@@ -82,10 +107,10 @@ public class Bus {
     }
 
     public int getPrise() {
-        return prise;
+        return price;
     }
 
     public void setPrise(int prise) {
-        this.prise = prise;
+        this.price = prise;
     }
 }
