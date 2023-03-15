@@ -38,7 +38,7 @@ public class Bus {
 
     // метод, который связывает автобус и водителя
     public void go() {
-        System.out.println("Автобус " + this.bus_line + " поехал под управлением - " + driver.getName());
+        System.out.println("Автобус " + Bus.this.bus_line + " поехал под управлением - " + driver.getName());
     }
 
 
