@@ -12,7 +12,9 @@ public class Human {
         if (obj == null || this.getClass() != obj.getClass()) {       // если объект obj является экземпляром класса Human
             return false;
         }
+
         Human that = (Human) obj;
         return this.is_worker == that.is_worker && this.age == that.age;
+
     }
 }

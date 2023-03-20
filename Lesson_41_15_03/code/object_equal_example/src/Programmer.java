@@ -8,9 +8,9 @@ public class Programmer extends Human {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass())
+        if (obj == null || this.getClass() != obj.getClass()) // если объект obj является экземпляром класса Human
             return false;
-        //       if (obj instanceof Programmer) {       // если объект obj является экземпляром класса Human
+        //       if (obj instanceof Programmer) {  проверка
         Programmer that = (Programmer) obj;
         return this.is_worker == that.is_worker
                 && this.age == that.age

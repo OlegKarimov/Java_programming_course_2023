@@ -9,10 +9,7 @@ public class Driver {
             this.age = age;
         } else System.out.println("Водитель должен быть старшше 21 года и не старше 65 лет.");
     }
-
-//    public void go(Bus bus) {
-//        this.
-//    }
+    
 
     public String getName() {
         return name;
