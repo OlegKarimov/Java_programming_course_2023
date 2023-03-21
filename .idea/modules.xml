@@ -15,7 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/Lesson_36_07_03/code/Phone/Phone.iml" filepath="$PROJECT_DIR$/Lesson_36_07_03/code/Phone/Phone.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_38_10_03/code/Triangle/Triangle.iml" filepath="$PROJECT_DIR$/Lesson_38_10_03/code/Triangle/Triangle.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_42_16_03/code/access_exemple/access_exemple.iml" filepath="$PROJECT_DIR$/Lesson_42_16_03/code/access_exemple/access_exemple.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_44_20_03/binary_search/binary_search.iml" filepath="$PROJECT_DIR$/Lesson_44_20_03/binary_search/binary_search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_44_20_03/code/binary_search/binary_search.iml" filepath="$PROJECT_DIR$/Lesson_44_20_03/code/binary_search/binary_search.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_38_10_03/code/bus/bus.iml" filepath="$PROJECT_DIR$/Lesson_38_10_03/code/bus/bus.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_42_16_03/code/cars/cars.iml" filepath="$PROJECT_DIR$/Lesson_42_16_03/code/cars/cars.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_39_13_03/code/dancer/dancer.iml" filepath="$PROJECT_DIR$/Lesson_39_13_03/code/dancer/dancer.iml" />
@@ -28,6 +28,7 @@
       <module fileurl="file://$PROJECT_DIR$/Lesson_41_15_03/code/object_equal_example/object_equal_example.iml" filepath="$PROJECT_DIR$/Lesson_41_15_03/code/object_equal_example/object_equal_example.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_39_13_03/code/share/share.iml" filepath="$PROJECT_DIR$/Lesson_39_13_03/code/share/share.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_34_03.03/code/todo_list/todo_list.iml" filepath="$PROJECT_DIR$/Lesson_34_03.03/code/todo_list/todo_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_44_20_03/code/treeset/treeset.iml" filepath="$PROJECT_DIR$/Lesson_44_20_03/code/treeset/treeset.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_41_15_03/code/twoo_interface/twoo_interface.iml" filepath="$PROJECT_DIR$/Lesson_41_15_03/code/twoo_interface/twoo_interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_38_10_03/code/voter/voter.iml" filepath="$PROJECT_DIR$/Lesson_38_10_03/code/voter/voter.iml" />
     </modules>
