@@ -180,4 +180,10 @@ if (!(other instanceof Money money)) {
 return false;
 }
 return amount == money.amount && currency.equalsIgnoreCase(money.currency);
-}
+
+---------------------------------------------------------------------------------
+
+Интерфейс Comparable
+public class ИмяКласса implements Comparable<Имя класса>
+
+public class House implements Comparable<House> {
