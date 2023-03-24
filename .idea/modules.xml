@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lesson_40_14_03/code/Autos/Autos.iml" filepath="$PROJECT_DIR$/Lesson_40_14_03/code/Autos/Autos.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_35_06_03/code/DZ/DZ.iml" filepath="$PROJECT_DIR$/Lesson_35_06_03/code/DZ/DZ.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson_40_14_03/code/Human/Human.iml" filepath="$PROJECT_DIR$/Lesson_40_14_03/code/Human/Human.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_46_22_03/code/GUI_2/GUI_2.iml" filepath="$PROJECT_DIR$/Lesson_46_22_03/code/GUI_2/GUI_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_40_14_03/code/Human_1/Human_1.iml" filepath="$PROJECT_DIR$/Lesson_40_14_03/code/Human_1/Human_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_35_06_03/code/Leccon_35_06_03/Leccon_35_06_03.iml" filepath="$PROJECT_DIR$/Lesson_35_06_03/code/Leccon_35_06_03/Leccon_35_06_03.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" filepath="$PROJECT_DIR$/Lektions_Konsultations_DZ.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" filepath="$PROJECT_DIR$/Lesson_32_02.03/code/Lesson32_02.03/Lesson32_02.03.iml" />
@@ -24,6 +25,8 @@
       <module fileurl="file://$PROJECT_DIR$/Lesson_46_22_03/code/dogs/dogs.iml" filepath="$PROJECT_DIR$/Lesson_46_22_03/code/dogs/dogs.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_37_09_03/code/employee_salary/employee_salary.iml" filepath="$PROJECT_DIR$/Lesson_37_09_03/code/employee_salary/employee_salary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_44_20_03/code/example_i44/example_i44.iml" filepath="$PROJECT_DIR$/Lesson_44_20_03/code/example_i44/example_i44.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_47_24_03/code/file_io_example/file_io_example.iml" filepath="$PROJECT_DIR$/Lesson_47_24_03/code/file_io_example/file_io_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_46_22_03/code/gui/gui.iml" filepath="$PROJECT_DIR$/Lesson_46_22_03/code/gui/gui.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_37_09_03/homework/homework.iml" filepath="$PROJECT_DIR$/Lesson_37_09_03/homework/homework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_46_22_03/code/human/human.iml" filepath="$PROJECT_DIR$/Lesson_46_22_03/code/human/human.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_41_15_03/code/interface_example/interface_example.iml" filepath="$PROJECT_DIR$/Lesson_41_15_03/code/interface_example/interface_example.iml" />

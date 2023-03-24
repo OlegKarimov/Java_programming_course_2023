@@ -62,6 +62,6 @@ public class Main {
 //        sort(humans); // сортировка по росту
 //        System.out.println(Arrays.toString(humans));
 
-
+        
     }
 }
