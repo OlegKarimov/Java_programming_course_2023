@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class User {
 
-    String name;
+    private String name;
     private String login;
     private String password;
-    Basket basket;
+    private Basket basket;
 
     public User(String name, String login, String password, Basket basket) {
         this.name = name;

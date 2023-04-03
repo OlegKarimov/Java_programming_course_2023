@@ -1,13 +1,15 @@
 //Создать класс Товар, имеющий переменные имя, цена, рейтинг.
 public class Product {
-    String name;
-    double prise;
-    int rating;
+    private String name;
+    private double prise;
+    private int rating;
 
-    public Product(String name, double prise, int rating) {
-        this.name = name;
-        this.prise = prise;
-        this.rating = rating;
+    public Product() {
+////    public Product(String name, double prise, int rating) {
+////        this.name = name;
+////        this.prise = prise;
+////        this.rating = rating;
+////    }
     }
 
     public String getName() {

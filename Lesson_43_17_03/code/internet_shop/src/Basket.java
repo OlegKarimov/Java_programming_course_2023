@@ -2,15 +2,15 @@ import java.util.ArrayList;
 
 //Создать класс Basket, содержащий массив купленных товаров.
 public class Basket {
-    ArrayList<Product> purchasedProdukts = new ArrayList<Product>();
+    private ArrayList<Product> purchasedProducts;
 
     public Basket(ArrayList<Product> purchasedProdukts) {
-        this.purchasedProdukts = purchasedProdukts;
+        this.purchasedProducts = purchasedProdukts;
     }
 
     @Override
     public String toString() {
         return "Basket " +
-                "Produkts: " + purchasedProdukts;
+                "Produkts: " + purchasedProducts;
     }
 }
