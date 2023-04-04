@@ -18,8 +18,8 @@ class MainTest {
         m = new Main();
     }
 
-    @org.junit.jupiter.api.Test
-    void mapAB() {
+    @Test
+    void mapAB_test() {
 
         Map<String, String> inputMap = new HashMap<>();
         inputMap.put("a", "Hi");
@@ -27,26 +27,27 @@ class MainTest {
         inputMap.put("c", "Hi hi");
 
         Map<String, String> resMap = new HashMap<>();
-        inputMap.put("a", "Hi");
-        inputMap.put("b", "There");
-        inputMap.put("c", "Hi hi");
+        resMap.put("a", "Hi");
+        resMap.put("ab", "HiThere");
+        resMap.put("b", "There");
+        resMap.put("c", "Hi hi");
 
-        assertEquals(resMap, inputMap);
+        assertEquals(resMap, m.mapAB(inputMap));
     }
 
-    @org.junit.jupiter.api.Test
-    void wordMultiple() {
+    @Test
+    void wordMultiple_test() {
         String[] stringsIn = {"a", "b", "a", "c", "b"};
-        Map<String, Boolean> outStringMap = null;
+        Map<String, Boolean> outStringMap = new HashMap<>();
         outStringMap.put("a", true);
         outStringMap.put("b", true);
         outStringMap.put("c", false);
 
-        assertEquals(outStringMap, stringsIn);
+        assertEquals(outStringMap, m.wordMultiple(stringsIn));
     }
 
-    @org.junit.jupiter.api.Test
-    void nameToNumberOccurence() {
+    @Test
+    void nameToNumberOccurence_test() {
         List<String> list = new ArrayList<>();
         list.add("Вася");
         list.add("Олег");
