@@ -28,11 +28,6 @@ public class MainForm extends JFrame {
         }
 // -----------------------------------------------------------
 
-        arrayListCategory = Metods.read_category_from_file(); // Сделать проверку на существование файла и каталогов!!!!!!!
-        if (!arrayListCategory.isEmpty()) {
-            listComboBox = Metods.from_namesCategory_to_arrayList(arrayListCategory);
-        }
-
         this.userName = userName;
         this.setSize(850, 650);
         this.setLocation(150, 20);
@@ -93,8 +88,20 @@ public class MainForm extends JFrame {
         panel.add(label3);
 // ----------------------------------------------------------------
 
+        MyModelComboBox modelComboBox = new MyModelComboBox();
+        JComboBox comboBox = new JComboBox(modelComboBox);
 
-        JComboBox comboBox = new JComboBox(listComboBox);
+        arrayListCategory = Metods.read_category_from_file(); // Сделать проверку на существование файла и каталогов!!!!!!!
+        if (!arrayListCategory.isEmpty()) {
+            listComboBox = Metods.from_namesCategory_to_arrayList(arrayListCategory);
+            for (String i : listComboBox) {
+                modelComboBox.add(i);
+            }
+        }
+        comboBox.setSelectedIndex(0);
+
+//        JComboBox comboBox = new JComboBox(listComboBox);
+
         comboBox.setEditable(false);
         comboBox.setBounds(10, 160, 180, 25);
         panel.add(comboBox);
@@ -119,7 +126,7 @@ public class MainForm extends JFrame {
         addCategory.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddCategoryForm addCategoryForm = new AddCategoryForm(listComboBox, arrayListCategory, comboBox);
+                AddCategoryForm addCategoryForm = new AddCategoryForm(listComboBox, arrayListCategory, comboBox, modelComboBox);
                 addCategoryForm.setVisible(true);
                 //       MainForm.this.setVisible(false);
             }
@@ -153,6 +160,19 @@ public class MainForm extends JFrame {
         JButton dellCategory = new JButton("Dell Category");
         dellCategory.setBounds(10, 320, 170, 25);
         panel.add(dellCategory);
+        dellCategory.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndexComboBox = comboBox.getSelectedIndex();
+                if ((selectedIndexComboBox > 0) && (!arrayListCategory.isEmpty())) {
+
+                    arrayListCategory.remove(selectedIndexComboBox - 1);
+                    Metods.save_arrayCategory_to_file(arrayListCategory);
+                    modelComboBox.remove(selectedIndexComboBox);
+                    comboBox.setSelectedIndex(0);
+                }
+            }
+        });
 //----------------------------------------------------------------
 
 //        TableModelProducts tableModel = new TableModelProducts();

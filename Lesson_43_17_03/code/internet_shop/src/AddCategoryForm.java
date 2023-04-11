@@ -20,9 +20,10 @@ public class AddCategoryForm extends JFrame {
     private String[] listComboBox;
     private ArrayList<Category> arrayListCategory;
     private JComboBox comboBox;
+    private MyModelComboBox modelComboBox;
 
 
-    public AddCategoryForm(String[] listComboBox, ArrayList<Category> arrayListCategory, JComboBox comboBox) {
+    public AddCategoryForm(String[] listComboBox, ArrayList<Category> arrayListCategory, JComboBox comboBox, MyModelComboBox modelComboBox) {
 //        JPanel panel = new JPanel();
 //        JFrame frame = new JFrame();
 
@@ -31,6 +32,7 @@ public class AddCategoryForm extends JFrame {
 //        this.products = products;
 //        this.tableModel = tableModel;
 //        this.table1 = table1;
+        this.modelComboBox = modelComboBox;
         this.listComboBox = listComboBox;
         this.arrayListCategory = arrayListCategory;
         this.comboBox = comboBox;
@@ -62,7 +64,7 @@ public class AddCategoryForm extends JFrame {
         buttonOk.isDefaultButton();
         panel.add(buttonOk);
 
-        ActionAddDate actiondate = new ActionAddDate(categoryText, arrayListCategory, comboBox);
+        ActionAddDate actiondate = new ActionAddDate(categoryText, arrayListCategory, comboBox, modelComboBox);
 //        listComboBox
         buttonOk.addActionListener(actiondate);
 
@@ -87,8 +89,9 @@ public class AddCategoryForm extends JFrame {
     //Обработчик для buttonOk, добавляющий запись категории
     public class ActionAddDate implements ActionListener {
 
-        public ActionAddDate(JTextField categoryText, ArrayList<Category> arrayListCategory, JComboBox comboBox) {
+        public ActionAddDate(JTextField categoryText, ArrayList<Category> arrayListCategory, JComboBox comboBox, MyModelComboBox modelComboBox) {
             this.categoryText = categoryText;
+            this.modelComboBox = modelComboBox;
             this.arrayListCategory = arrayListCategory;
 //            String[] listComboBox
 //            this.listComboBox = listComboBox;
@@ -106,8 +109,10 @@ public class AddCategoryForm extends JFrame {
                 JOptionPane.showMessageDialog(null, "Please enter the category name field", "Error", JOptionPane.PLAIN_MESSAGE);
             } else {
                 String comboBoxItem = categoryText.getText();
-                comboBox.addItem(comboBoxItem);
+//                comboBox.addItem(comboBoxItem);
 //                listComboBox
+
+                modelComboBox.add(comboBoxItem);
                 Product product = new Product();
                 ArrayList<Product> productArrayList = new ArrayList<>();
                 product.setName("-1");
@@ -142,6 +147,7 @@ public class AddCategoryForm extends JFrame {
         private ArrayList<Category> arrayListCategory;
         //        private String[] listComboBox;
         private JComboBox comboBox;
+        private MyModelComboBox modelComboBox;
     }
 
 }

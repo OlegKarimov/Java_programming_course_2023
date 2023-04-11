@@ -56,7 +56,7 @@ public class Main {
         list.add("Коля");
         list.add("Олег");
         int colNames;
-        colNames = nameToNumberOccurence(list, "Олег");
+        colNames = nameToNumberOccurence(list, "Оле");
         System.out.println("Names in list: " + colNames);
     }
 //Дана Map map, написать метод, который вернет мапу, такую,
@@ -70,8 +70,6 @@ public class Main {
 
     public static Map<String, String> mapAB(Map<String, String> inputMap) {
         Map<String, String> bufRes;
-        String a = "a";
-        String b = "b";
         bufRes = inputMap;
         if (inputMap.containsKey("a") && inputMap.containsKey("b")) {
             bufRes.put("ab", bufRes.get("a") + bufRes.get("b"));
@@ -88,18 +86,27 @@ public class Main {
 //wordMultiple(["c", "c", "c", "c"]) → {"c": true}
 
     public static Map<String, Boolean> wordMultiple(String[] strings) {
-        Map<String, Boolean> mapBoolean = new HashMap<>();
-        boolean repeat = false;
-        for (int i = 0; i < strings.length; i++) {
-            for (int j = 0; j < strings.length; j++) {
-                if ((i != j) && (strings[i].equals(strings[j]))) {
-                    repeat = true;
-                }
+        Map<String, Boolean> result = new HashMap<>();
+        for (String s : strings) {
+            if (result.containsKey(s)) {
+                result.put(s, true);
+            } else {
+                result.put(s, false);
             }
-            mapBoolean.put(strings[i], repeat);
-            repeat = false;
         }
-        return mapBoolean;
+//        boolean repeat = false;
+//        for (int i = 0; i < strings.length; i++) {
+//            for (int j = 0; j < strings.length; j++) {
+//                if ((i != j) && (strings[i].equals(strings[j]))) {
+//                    repeat = true;
+//                }
+//            }
+//            mapBoolean.put(strings[i], repeat);
+//            repeat = false;
+//        }
+
+
+        return result;
     }
 
     //------------------------------------------------------------------------------------------------
@@ -108,12 +115,18 @@ public class Main {
 //Пример: nameToNumberOccurence(List list, String name)
 //Vasia -> 3
     public static int nameToNumberOccurence(List<String> list, String name) {
-        int col = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).equals(name)) {
-                col++;
-            }
+        Map<String, Integer> result = new HashMap<>();
+        for (String s : list) {
+            if (result.containsKey(s)) {
+                result.put(name, result.get(s) + 1);
+            } else result.put(s, 1);
         }
-        return col;
+//        int col = 0;
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).equals(name)) {
+//                col++;
+//            }
+//        }
+        return result.get(name);
     }
 }

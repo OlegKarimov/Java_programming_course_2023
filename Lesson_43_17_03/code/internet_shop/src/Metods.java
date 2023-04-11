@@ -35,6 +35,34 @@ public class Metods {
         return userRegistrationName;
     }
 
+    public static void save_arrayCategory_to_file(ArrayList<Category> arrayListCategory) {
+        ArrayList<String> tabOfString = new ArrayList<>();
+
+        for (Category i : arrayListCategory) {
+            String bufString;
+            ArrayList<Product> bufArrayProducts = new ArrayList<>();
+            bufArrayProducts = i.getProducts();
+            bufString = i.getName();
+            for (Product j : bufArrayProducts) {
+                bufString += "°" + j.getName() + "°" + j.getPrise() + "°" + j.getRating();
+            }
+            tabOfString.add(string_coding(bufString));
+        }
+
+        try {
+            FileWriter myWriter = new FileWriter(pathCategory);
+            for (String i : tabOfString) {
+                myWriter.write(i + '\n');
+            }
+            myWriter.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "An error occurred while working with the file " + pathCategory, "Error", JOptionPane.PLAIN_MESSAGE);
+//            e.printStackTrace();
+        }
+    }
+
+
     public static void save_arrayProducts_to_file(ArrayList<Product> arrayListProducts) {
         ArrayList<String> tabOfString = new ArrayList<>();
         for (Product i : arrayListProducts) {
