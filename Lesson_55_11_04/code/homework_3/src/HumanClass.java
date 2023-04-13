@@ -20,5 +20,7 @@ public class HumanClass implements Comparable<HumanClass> {
         if (this.age < o.age) {
             return -1;
         } else return 1;
+
+        // return this.age -person.age;
     }
 }
