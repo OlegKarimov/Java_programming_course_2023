@@ -1,3 +1,3 @@
 public interface StringConcate {
-    String concat(String a, String b);
+    String concat(int a, int b);
 }

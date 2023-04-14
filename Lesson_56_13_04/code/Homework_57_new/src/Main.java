@@ -5,9 +5,8 @@ public class Main {
 
 //    1. сложить строки a и  b
 
-        StringConcate stringConcate = (a, b) -> a.concat(b);
-//    StringConcate stringConcate = (a,b) -> a + b;
-        System.out.println(stringConcate.concat("Hallo ", "world"));
+        StringConcate stringConcate = (a, b) -> Integer.toString(a) + (b);
+        System.out.println(stringConcate.concat(2, 5));
         System.out.println();
 
 //-----------------------------------------------------------------------------
