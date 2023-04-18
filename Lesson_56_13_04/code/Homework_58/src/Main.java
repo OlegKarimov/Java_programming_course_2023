@@ -34,7 +34,9 @@ public class Main {
 // 4. StringConcate . Сложить строки a и  b
 
         BinaryOperator<Integer> stringConcate = (a, b) -> Integer.parseInt(Integer.toString(a) + Integer.toString(b));
-        System.out.println(stringConcate.apply(2, 5));
+//        BiFunction<Integer, Integer, String> stringBiFunction = (a, b) -> Integer.toString(a) + b;
+//        System.out.println(stringBiFunction.apply(3, 4));
+        System.out.println(stringConcate.apply(2, 50));
         System.out.println();
 
 //-----------------------------------------------------------------------------
@@ -51,9 +53,10 @@ public class Main {
 
         String str = "AAA BBbb dEF cDkls bBb";
 
-        UnaryOperator<String> function_1 = s -> s.toLowerCase();
-        UnaryOperator<String> function_2 = s -> s.toUpperCase();
-        UnaryOperator<String> function_3 = s -> "*****";
+        Function<String, String> function_1 = s -> s.toLowerCase();
+//        UnaryOperator<String> function_2 = s -> s.toUpperCase();
+        Function<String, String> function_2 = String::toUpperCase;
+        Function<String, String> function_3 = s -> "*****";
 
         Predicate<String> caseLength_1 = s -> s.length() == 3;
         Predicate<String> caseLength_2 = s -> s.length() == 4;
@@ -77,7 +80,7 @@ public class Main {
 //Условие: если длина слова = 3 то заменить буквы этого слова на маленькие.
 //На выходе будет: aaa BBBB def cDkls bbb
 
-    public static String changeString(String str, Predicate predicate, UnaryOperator function) {
+    public static String changeString(String str, Predicate predicate, Function function) {
         String[] arrayStr = str.split(" ");
         String result = "";
         for (String i : arrayStr) {
@@ -85,6 +88,8 @@ public class Main {
                 result += function.apply(i) + " ";
             } else result += i + " ";
         }
+
         return result;
+//        return String.join("", arrayStr);
     }
 }
