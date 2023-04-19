@@ -1,9 +1,9 @@
 public abstract class PredicateAbstract {
 
-    public boolean test(String s) {
+    public abstract boolean test(String s); //{
 
-        boolean result = true;
+//        boolean result = true;
 
-        return result;
-    }
+//        return result;
+//    }
 }

@@ -349,3 +349,13 @@ sum.apply(3, 4);
 // R apply (T obj1, U obj2)
 BiFunction<Integer, Integer, String> stringBiFunction = (a, b) -> Integer.toString(a, b);
 stringBiFunction.apply(3, 4);
+
+----------------------------------------------------------------------------------
+
+Способы создания стримов
+
+// Stream.empty() - пустой стрим
+// list.stream() - стрим из списка
+// map.enrtySet().stream() - стрим из мапы
+// Arrays.stream(array) - стрим из массива
+// Stream.of(1,2,3,5,9) - стрим из элементов

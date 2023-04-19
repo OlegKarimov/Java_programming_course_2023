@@ -1,7 +1,5 @@
 public abstract class FunctionAbstract {
 
-    public String apply(String str) {
-
-        return str;
-    }
+    public abstract String apply(String str);
+//    public abstract boolean chek
 }
