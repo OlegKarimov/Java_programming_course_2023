@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 //Задача1
@@ -61,13 +63,14 @@ public class Main {
     public static long countWords(String input, String letter) {
 
         return Arrays.stream(input.split(" "))
-                .filter(p -> p.charAt(0) == (letter.charAt(0))).count();
+//             Stream.of(input.split(" "))
+                .filter(p -> p.startsWith(letter)).count();
+        
+//                .map(p -> p.substring(0, 1))
+//                .filter(p -> p.equals(letter)).count();
 
-//                .filter(p -> p.chars().findFirst().equals(letter)).count();
+//                .filter(p -> p.charAt(0) == (letter.charAt(0))).count();
 
-//                .findFirst()
-//                .filter(p -> p.equals(letter))
-//                .stream().count();
 
     }
 

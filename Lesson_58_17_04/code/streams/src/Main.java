@@ -152,7 +152,7 @@ public class Main {
         namesSort.stream().noneMatch(name -> name.equals("Jack"));
 
 //---------------------------------------------------------------------------
-        // method collect
+        // метод collect
         List<String> namesFilter = namesSort.stream()
                 .filter(name -> name.length() <= 5)
                 .collect(Collectors.toList());
@@ -164,6 +164,75 @@ public class Main {
         System.out.println(namesToSet);
 
 // -----------------------------------------------------------------------------------------------------------------
+        // метод  min(), max() мин., макс. возвращают ответ в Optional
+
+        List<Integer> intss = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        Optional<Integer> min = intss.stream().min(Integer::compare);
+        Optional<Integer> max = intss.stream().max(Integer::compare);
+        System.out.println(min.get());
+        System.out.println(max.get());
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        // метод reduce() - суммирует
+
+        OptionalInt reduce = IntStream.range(1, 4).reduce(Integer::sum);
+        System.out.println(reduce.getAsInt()); // reduce = 1+2+3
+
+        int reduce1 = IntStream.range(1, 4).reduce(10, (a, b) -> a + b);
+        System.out.println(reduce1); // 10+ 1+2+3
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        // collect() method  соединяет собирает стрим
+
+        String collect = Stream.of("h", "e", "l", "l", "o").collect(Collectors.joining());
+        System.out.println(collect);  // hello
+
+        String collect2 = Stream.of("h", "e", "l", "l", "o").collect(Collectors.joining(":"));
+        System.out.println(collect2); // h:e:l:l:o
+
+        String collect3 = Stream.of("h", "e", "l", "l", "o")
+                .collect(Collectors.joining(":", "<", ">"));
+        System.out.println(collect3);
+
+// группировка элем. в соответствии с заданным критериями groupingBy
+        Food product = new Food("bred", 1);
+        Food product1 = new Food("ASD", 30);
+        Food product2 = new Food("asd", 1);
+        Food product3 = new Food("rrrrr", 30);
+
+        List<Food> products = new ArrayList<>();
+        products.add(product);
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+// группировка в мапу
+        Map<Integer, List<Food>> groupFood = products.stream()
+                .collect(Collectors.groupingBy(Food::getPrice));
+        System.out.println(groupFood); // {false=[bred, asd], true=[ASD, rrrrr]}
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        // среднне арифметич. averagingInt
+        Double price = products.stream().collect(Collectors.averagingInt(Food::getPrice));
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        // сумма элементов
+
+        int sum = products.stream().collect(Collectors.summingInt(Food::getPrice));
+        System.out.println(sum); // 62
+
+// -----------------------------------------------------------------------------------------------------------------
+
+        // разделение элем. на группы в соответствии с заданным критериями
+
+        Map<Boolean, List<Food>> mapDivided = products.stream()
+                .collect(Collectors.partitioningBy(p -> p.getPrice() > 9));
+        System.out.println(mapDivided); // {false=[bred, ASD, asd, rrrrr], true=[]}
+
+// -----------------------------------------------------------------------------------------------------------------
         List<String> list = new ArrayList<>();
         Collections.addAll(namesSort, "Bill", "Jack", "Jill", "Bill", "Oleg", "Barbara", "Oleg", "Helen");
 
@@ -172,9 +241,38 @@ public class Main {
         }
 
         System.out.println(stringList(list));
+//----------------------------------------------------------------------------------------------------------------
+// сортировка по компаратору !!
+        List<Person2> persons2 = Arrays.asList(new Person2("Bill", 23, "Address"),
+                new Person2("Jack", 63, "Address"),
+                new Person2("Ann", 27, "Address"),
+                new Person2("Bill", 70, "Address"));
 
+        persons2.stream()
+                .sorted(new Person2ComparatorAge())
+                .forEach(p -> System.out.println(p.getName()));
+
+        System.out.println();
+//-----------------------------------------------------------------------------------------------------
+
+        // Параллельные потоки
+        // создание parallelStream() и parallel()
+//        products.parallelStream()
+
+        List<String> namesPosledov = Arrays.asList("Jack", "Tom", "Jill", "Kate");
+        System.out.println("Stream");
+        namesPosledov.stream()
+                .filter(n -> n.length() == 4)
+                .forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("Parrallel Stream");
+        namesPosledov.parallelStream()
+                .filter(n -> n.length() == 4)
+                .forEach(System.out::println);
     }
 
+    //-----------------------------------------------------------------------------------------------------
     public static List<String> stringList(List<String> inputList) {
         return inputList.stream().distinct().collect(Collectors.toList());
 

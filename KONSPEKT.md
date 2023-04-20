@@ -321,7 +321,7 @@ import org.junit.jupiter.api.Test;
 Function<Integer, String> intToString = num -> String.valueOf(num);
 intToString.apply(2);
 
-// 2. UnaryOperator<T> - аналог Function только для одного и того же типа
+// 2. UnaryOperator<T> - аналог Function только для одного и того де типа
 // T apply (T obj)
 UnaryOperator<Integer> isSquare = num -> num * num;
 isSquare.apply(5);
@@ -340,15 +340,15 @@ consumer.accept("Hallo");
 // T get ()
 Supplier<String> stringSupplier = () -> "Hallo";
 
-// 6. BinaryOperator<T> - принимает два обьекта типа T и возвращает обьект тоже типа T
-// T apply (T obj1, T obj2)
-BinaryOperator<Integer> sum = (num1, num2) -> num1 + num2;
-sum.apply(3, 4);
-
-// 7. BinaryOperator<T> - принимает два обьекта типов T и U и преобразуит из в другой тип R
+// 6. BiFunction<T,U,R> - принимает два обьекта типов T и U и преобразует их в другой тип R
 // R apply (T obj1, U obj2)
 BiFunction<Integer, Integer, String> stringBiFunction = (a, b) -> Integer.toString(a, b);
 stringBiFunction.apply(3, 4);
+
+// 7. BinaryOperator<T> - принимает два обьекта типа T и возвращает обьект тоже типа T
+// T apply (T obj1, T obj2)
+BinaryOperator<Integer> sum = (num1, num2) -> num1 + num2;
+sum.apply(3, 4);
 
 ----------------------------------------------------------------------------------
 
